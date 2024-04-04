@@ -1,0 +1,28 @@
+
+--ABBY MCCOLLAM
+--CHALLENGE 4
+
+--In MapReduce mode with input file on HDFS:
+a = LOAD '/user/abbymccollam/googlebooks.csv' as (word:chararray, year:int, count:int, page: int, book: int);
+
+
+b = FOREACH (GROUP a BY (year, word)) {
+	num = SUM(a.count);
+	GENERATE FLATTEN(group) AS (year, word), num AS num;
+}
+
+-- Find the maximum count for each year
+c = FOREACH (GROUP b BY year) {
+    max = MAX(b.num);
+    GENERATE group AS year, max AS max;
+}
+
+-- Join with the original counts to filter out the most common bigram for each year
+d = JOIN b BY (year, num), c BY (year, max);
+
+-- Output the result
+result = FOREACH d GENERATE b::year AS year, b::word AS word, b::num AS num; 
+
+-- Store the result
+store result into '/user/abbymccollam/challenge4';
+

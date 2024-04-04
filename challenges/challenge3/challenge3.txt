@@ -1,0 +1,29 @@
+--ABBY MCCOLLAM
+--CHALLENGE 3
+
+--In MapReduce mode with input file on HDFS:
+a = LOAD '/user/abbymccollam/googlebooks.csv' as (word:chararray, year:int, count:int);
+
+-- Filter data for the year 2003
+b = FILTER a BY year == 2003;
+
+-- Find the maximum count
+c = FOREACH (GROUP b ALL) GENERATE MAX(b.count) AS max_count;
+
+-- ! Books	2003	89
+
+-- Join the original data with the maximum count
+d = JOIN b BY count, c BY max_count;
+
+-- ! Books	2003	89	89
+
+-- Extract the word associated with the maximum count
+e = FOREACH d GENERATE b::word AS max_word, c::max_count AS new_max_count;
+
+-- Output the result
+store e into '/user/abbymccollam/challenge3';
+
+
+
+
+
