@@ -7,3 +7,4 @@
 // Note: Optimize later
 // TODO: Add validation
 // FIXME: Memory leak
+// TODO: Optimize query
