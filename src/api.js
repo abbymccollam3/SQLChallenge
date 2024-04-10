@@ -15,3 +15,4 @@
 // TODO: Add logging
 // FIXME: Race condition
 // TODO: Update docs
+// Note: Refactor this
