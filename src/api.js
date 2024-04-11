@@ -18,3 +18,4 @@
 // Note: Refactor this
 // Review logic
 // TODO: Fix error
+// FIXME: Handle null
