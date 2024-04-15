@@ -29,3 +29,4 @@
 // Review code
 // TODO: Add tests
 // FIXME: Handle error
+// Note: Optimize
