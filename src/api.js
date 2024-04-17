@@ -40,3 +40,4 @@
 // TODO: Fix bug
 // Note: Improve this
 // FIXME: Check null
+// TODO: Optimize query
