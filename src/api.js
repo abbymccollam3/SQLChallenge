@@ -44,7 +44,3 @@
 // Review efficiency
 // TODO: Add check
 // Note: Update docs
-// TODO: Add caching
-// Note: Refactor needed
-// TODO: Fix timeout
-// Review this
